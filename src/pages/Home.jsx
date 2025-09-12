@@ -70,18 +70,10 @@ const caseStudies = [
         city: "Nagpur",
         description: "Position the consultancy as a trusted expert in Nagpur and increase revenue by 3x within 2 months.",
         image: image1,
-        detailData: {
-            title: "Visa & Immigration Consultant –",
-            city: "Nagpur",
-            objective: "To position the consultancy as a trusted expert in Nagpur and increase revenue by 3× within 2 months.",
-            challenge: "Low visibility online, a generic website, fake enquiries and inconsistent content caused low trust and minimal lead flow.",
-            solution: "Redesigned the website with a streamlined enquiry funnel, SEO-optimized service pages for target countries, and weekly informative reel content with active comment engagement. Launched targeted Meta Ads campaigns with geo-based retargeting.",
-            results: [
-                "4× more qualified leads in 60 days",
-                "+250% organic engagement from visa-related reels content",
-                "Conversion rate increased from 2% to 9%",
-            ],
-        }
+        detailData: [
+            "4× more qualified leads in 60 days",
+            "+250% organic engagement from visa-related reels content",
+        ]
     },
     {
         id: 2,
@@ -90,19 +82,10 @@ const caseStudies = [
         city: "Mumbai",
         description: "Boost beauty salon bookings, increase the average order value, and enhance brand visibility across Mumbai and its metro suburbs.",
         image: image3,
-        detailData: {
-            title: "Beauty Salon –",
-            city: "Mumbai",
-            objective: "To boost beauty salon bookings, increase the average order value, and enhance brand visibility across Mumbai and its metro suburbs.",
-            challenge: "Fragmented branding, inconsistent social presence, and a poorly converting booking engine led to missed income.",
-            solution: "Created a brand identity with styled color system and high-conversion landing pages. Scheduled regular UGC & awareness videos featuring real clients. Amplified reach with Instagram/Facebook ads and influencer collaborations.",
-            results: [
-                "5× revenue increased in just 3 months",
-                "40% increase in monthly appointments",
-                "+1,200 new Instagram followers in 120 days",
-                "Booking funnel conversion rate improved by 33%",
-            ],
-        }
+        detailData: [
+            "40% increase in monthly appointments",
+            "+1,200 new Instagram followers in 120 days",
+        ],
     },
     {
         id: 3,
@@ -111,18 +94,10 @@ const caseStudies = [
         city: "Ahmedabad, Gujarat",
         description: "Establish a top-of-mind brand as a visionary architect in Ahmedabad and generate high‑value project enquiries.",
         image: image2,
-        detailData: {
-            title: "Architect –",
-            city: "Ahmedabad, Gujarat",
-            objective: "Establish a top-of-mind brand as a visionary architect in Ahmedabad and generate high‑value project enquiries.",
-            challenge: "No digital presence, minimal portfolio online, and little differentiation in a crowded design market.",
-            solution: "Designed a clean, visual-first website showcasing past projects. Developed brand-led graphic design assets and brochures. Ran performance marketing targeting local real estate developers and builders with portfolio ads.",
-            results: [
-                "5 high-value project leads within the first 2 months",
-                "Portfolio site saw a 5 minutes+ average session duration",
-                "Reduced fake leads and increased show-up rate",
-            ],
-        }
+        detailData: [
+            "5 high-value project leads within the first 2 months",
+            "Portfolio site saw a 5 minutes+ average session duration",
+        ],
     },
     {
         id: 4,
@@ -131,18 +106,10 @@ const caseStudies = [
         city: "Delhi",
         description: "Grow monthly client consultations from 12-15 to 35+, especially among young professionals seeking wellness.",
         image: image1,
-        detailData: {
-            title: "Dietician –",
-            city: "Delhi",
-            objective: "Grow monthly client consultations from 12-15 to 35+, especially among young professionals seeking wellness.",
-            challenge: "Lacks authority, low content output, and poor visibility in local SEO and social media.",
-            solution: "Launched content-driven Instagram and blog strategy (infographics, diet hacks, testimonials). Developed downloadable lead magnet ('7-Day Delhi Clean Meal Plan') and set up lead generation ads targeting Delhi working professionals.",
-            results: [
-                "Tripled new consultations in 60 days",
-                "Downloadable plan converted at 28% CTR",
-                "Instagram engagement increased by 285%",
-            ],
-        }
+        detailData: [
+            "Tripled new consultations in 60 days",
+            "Downloadable plan converted at 28% CTR",
+        ],
     },
     {
         id: 5,
@@ -151,18 +118,10 @@ const caseStudies = [
         city: "Surat",
         description: "Generate qualified inquiries and increase site visits for the upcoming luxury residential project.",
         image: image3,
-        detailData: {
-            title: "Real Estate Builder –",
-            city: "Surat",
-            objective: "Generate qualified inquiries and increase site visits for the upcoming luxury residential project.",
-            challenge: "Generic branding, low online presence among Surat homebuyers, and unoptimized landing pages.",
-            solution: "Built a custom website with a landing page including virtual walkthrough videos, interactive floor plans, and inquiry forms. Launched a performance campaign on Google and Facebook/Instagram targeting local demographic and interest segments. Tracked pixel‑based retargeting to visitors.",
-            results: [
-                "Generated 150+ quality leads in the first month",
-                "Cost-per-lead dropped 40% average month over month",
-                "Website engagement time spiked by 62%",
-            ],
-        }
+        detailData: [
+            "Generated 150+ quality leads in the first month",
+            "Website engagement time spiked by 62%",
+        ],
     },
 ];
 
@@ -466,14 +425,42 @@ const Home = () => {
                                 viewport={{ once: true }}
                                 className="mx-auto space-y-5"
                             >
-                                <div className="bg-white h-[300px] flex flex-row shadow md:p-8 p-4 text-left">
-                                    <div className="xl:w-[70%] w-full justify-between flex flex-col">
-                                        <p className="text-[#F68D13] text-sm font-medium mb-4">{current.subtitle}</p>
-                                        <h2 className="text-2xl md:text-[33px] lg:text-4xl font-medium mb-6">
-                                            {current.title} - <span className="text-[#F68D13]">{current.city}</span>
-                                        </h2>
-                                        <p className="text-gray-700 mb-6 md:text-base text-sm line-clamp-3">{current.description}</p>
-                                        <div className="flex md:py-0 md:justify-start justify-center">
+                                <div className="bg-white min-h-[350px] lg:min-h-[400px] flex flex-col xl:flex-row shadow md:p-8 p-4 text-left">
+                                    <div className="xl:w-[70%] w-full flex flex-col justify-between">
+                                        <div className="flex-1">
+                                            <p className="text-[#F68D13] text-sm font-medium mb-2 md:mb-4">{current.subtitle}</p>
+                                            <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium mb-3 md:mb-4 lg:mb-6 leading-tight">
+                                                {current.title} - <span className="text-[#F68D13]">{current.city}</span>
+                                            </h2>
+                                            <p className="text-gray-700 mb-4 md:mb-6 md:text-base text-sm leading-relaxed">{current.description}</p>
+                                            
+                                            {/* Statistics from detailData */}
+                                            {current.detailData && current.detailData.length > 0 && (
+                                                <div className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6 py-2 md:py-4">
+                                                    {current.detailData.map((stat, index) => {
+                                                        // Extract percentage or number from the stat
+                                                        const percentageMatch = stat.match(/(\d+)%/);
+                                                        const numberMatch = stat.match(/(\d+)×/);
+                                                        const displayNumber = percentageMatch ? percentageMatch[1] + '%' : 
+                                                                             numberMatch ? numberMatch[1] + '×' : 
+                                                                             stat.match(/(\d+)/)?.[1] || '';
+                                                        
+                                                        return (
+                                                            <div key={index} className="text-left">
+                                                                <div className="text-[#F68D13] text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2">
+                                                                    {displayNumber}
+                                                                </div>
+                                                                <div className="text-gray-600 text-xs md:text-sm lg:text-base leading-tight">
+                                                                    {stat.replace(/^\d+[%×]?\s*/, '')}
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
+                                            )}
+                                        </div>
+                                        
+                                        <div className="flex md:py-0 md:justify-start justify-center mt-auto">
                                             <button 
                                                 onClick={() => {
                                                     const slug = current.title
@@ -490,8 +477,8 @@ const Home = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="xl:w-[30%] w-full xl:flex hidden">
-                                        <img src={current?.image || s1} alt="swiper" />
+                                    <div className="xl:w-[30%] h-full w-full xl:flex hidden items-center justify-center mt-4 xl:mt-0">
+                                        <img src={current?.image || s1} alt="swiper" className="max-w-full h-auto object-contain" />
                                     </div>
                                 </div>
                             </motion.div>

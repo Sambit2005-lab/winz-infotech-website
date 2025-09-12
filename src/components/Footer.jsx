@@ -2,10 +2,67 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn, FaBehance, FaYoutube, FaPhoneAl
 import { MdEmail } from "react-icons/md";
 import TextHover from "./Animations/TextHover";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Footer = ({ className = "" }) => {
 
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    
+    // Form state
+    const [formData, setFormData] = useState({
+        name: '',
+        phoneNumber: ''
+    });
+
+    // Handle input changes
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    // Handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            setLoading(true);
+        
+            // Basic validation
+            if (!formData.name.trim() || !formData.phoneNumber.trim()) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const templateParams = {
+                title: "New Contact Message From Footer",
+                name: formData.name,
+                contactNo: formData.phoneNumber,
+            };
+
+            await emailjs.send(
+                "service_iu7004n",
+                "template_8s7wqat",
+                templateParams,
+                "lMZcrZk-HUycW4d-z"
+            );
+            alert("Message sent successfully!");
+
+            // Reset form
+            setFormData({
+                name: '',
+                phoneNumber: ''
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Failed to submit form. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <footer className={`bg-white text-gray-800  ${className}`}>
@@ -81,7 +138,7 @@ const Footer = ({ className = "" }) => {
                                         LANDING PAGES
                                     </h3>
                                     <ul className="space-y-1 text-gray-700">
-                                        <li><a href="https://hook-neon.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FC8A10]">Doctors & Medical Professionals</a></li>
+                                        <li><a href="https://hook.winzinfotech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FC8A10]">Doctors & Medical Professionals</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -176,7 +233,7 @@ const Footer = ({ className = "" }) => {
                     </div>
 
                     {/* Right: Contact Form */}
-                    <div className="w-full lg:max-w-md bg-gray-200 p-6 rounded">
+                    <form onSubmit={handleSubmit} className="w-full lg:max-w-md bg-gray-200 p-6 rounded">
                         <h3 className="font-bold mb-1" style={{ color: "#FC8A10" }}>
                             CONTACT US
                         </h3>
@@ -188,18 +245,24 @@ const Footer = ({ className = "" }) => {
                         </p>
                         <input
                             type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
                             placeholder="Your Name"
                             className="w-full bg-white mb-3 p-2 border border-gray-300 rounded text-sm focus:outline-none"
                         />
                         <input
-                            type="text"
+                            type="tel"
+                            name="phoneNumber"
+                            value={formData.phoneNumber}
+                            onChange={handleInputChange}
                             placeholder="Phone Number"
                             className="w-full bg-white mb-4 p-2 border border-gray-300 rounded text-sm focus:outline-none"
                         />
-                        <button className="bg-[#F68D13] cursor-pointer text-white transition">
-                            <TextHover text="Sent a request" />
+                        <button type="submit" className="bg-[#F68D13] cursor-pointer text-white transition">
+                            <TextHover text="Send a request" />
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
 

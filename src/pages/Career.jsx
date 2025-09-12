@@ -226,7 +226,7 @@ const CareerPage = () => {
                                 placeholder="Name"
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-gray-100"
+                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm "
                             />
 
                             {/* contact */}
@@ -236,7 +236,9 @@ const CareerPage = () => {
                                 placeholder="Contact No"
                                 value={formData.contact}
                                 onChange={handleInputChange}
-                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-gray-100"
+                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none
+                                 focus:border-[#F68D13] py-2 text-sm [&::-webkit-outer-spin-button]:appearance-none
+                                  [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]"
                             />
 
                             {/* email */}
@@ -246,7 +248,7 @@ const CareerPage = () => {
                                 placeholder="Email"
                                 value={formData.email}
                                 onChange={handleInputChange}
-                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-gray-100"
+                                className="w-full border-b border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm "
                             />
 
                             {/* position */}
@@ -254,7 +256,7 @@ const CareerPage = () => {
                                 name="position"
                                 value={formData.position}
                                 onChange={handleInputChange}
-                                className="w-full border px-2 border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-gray-100 appearance-none cursor-pointer"
+                                className="w-full border border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm appearance-none cursor-pointer"
                             >
                                 <option value="" disabled className="text-gray-500">Select Position</option>
                                 <option value="Graphic Designers">Graphic Designers</option>
@@ -276,7 +278,7 @@ const CareerPage = () => {
                                     onChange={handleFileChange}
                                     className="absolute inset-0 bg-white px-2 w-full h-full opacity-0 cursor-pointer"
                                 />
-                                <div className="w-full border-b border-gray-300 focus-within:border-[#F68D13] py-2 text-sm bg-gray-100 flex justify-between items-center">
+                                <div className="w-full border-b border-gray-300 focus-within:border-[#F68D13] py-2 text-sm flex justify-between items-center">
                                     <span className={formData.attachment ? "text-black" : "text-gray-500"}>
                                         {formData.attachment ? formData.attachment.name : "Attachment"}
                                     </span>

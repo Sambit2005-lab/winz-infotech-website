@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import { useInView } from "react-intersection-observer";
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import ContactUsFooter from "../components/ContactUsFooter";
 import TextHover from "../components/Animations/TextHover";
 import SEO from "../components/SEO";
@@ -18,6 +18,7 @@ const Contact = () => {
         budget: "",
         message: "",
     });
+    const [loading, setLoading] = useState(false);
 
     const [ref, inView] = useInView({
         triggerOnce: true,
@@ -33,34 +34,43 @@ const Contact = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            setLoading(true);
+            
+            const templateParams = {
+                title: "New Contact Message",
+                name: formData.name,
+                email: formData.email,
+                contactNo: formData.contactNo,
+                businessName: formData.businessName,
+                budget: formData.budget,
+                message: formData.message,
+            };
 
-        emailjs
-            .send(
-                "service_wjqzp4j",
-                "template_5yqvdqn",
-                formData,
-                "4Lm6oNcJqGzZHJhXE"
-            )
-            .then(
-                (result) => {
-                    console.log("Email sent successfully:", result.text);
-                    alert("Message sent successfully!");
-                    setFormData({
-                        name: "",
-                        contactNo: "",
-                        email: "",
-                        businessName: "",
-                        budget: "",
-                        message: "",
-                    });
-                },
-                (error) => {
-                    console.log("Error sending email:", error.text);
-                    alert("Failed to send message. Please try again.");
-                }
+            await emailjs.send(
+                "service_iu7004n",
+                "template_8s7wqat",
+                templateParams,
+                "lMZcrZk-HUycW4d-z"
             );
+
+            alert("Message sent successfully!");
+            setFormData({
+                name: "",
+                contactNo: "",
+                email: "",
+                businessName: "",
+                budget: "",
+                message: "",
+            });
+        } catch (err) {
+            console.error(err);
+            alert("Failed to send message.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     const contactStructuredData = {
@@ -186,7 +196,9 @@ const Contact = () => {
                                 placeholder="Contact No"
                                 value={formData.contactNo}
                                 onChange={handleInputChange}
-                                className="w-full border-b  border-gray-300 bg-white px-2 focus:outline-none focus:border-[#F68D13] py-2 text-sm "
+                                className="w-full border-b  border-gray-300 bg-white px-2 focus:outline-none
+                                 focus:border-[#F68D13] py-2 text-sm [&::-webkit-outer-spin-button]:appearance-none 
+                                 [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]"
                             />
                             <input
                                 type="email"
@@ -208,7 +220,7 @@ const Contact = () => {
                                 name="budget"
                                 value={formData.budget}
                                 onChange={handleInputChange}
-                                className="w-full px-1 cursor-pointer border border-gray-300 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-white"
+                                className="w-full px-1 cursor-pointer border border-gray-300 focus:outline-none focus:border-[#F68D13] py-2 text-sm bg-white "
                             >
                                 <option value="" disabled>Select Budget Range</option>
                                 <option value="Under ₹5,000">Under ₹5,000</option>
@@ -233,6 +245,12 @@ const Contact = () => {
                             </div>
                         </form>
                     </div>
+
+                    {loading && (
+                        <div className="fixed inset-0 flex items-center justify-center bg-black/40 bg-opacity-40 z-50">
+                            <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    )}
                 </div>
             </div>
 

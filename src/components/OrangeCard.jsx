@@ -18,7 +18,7 @@ const OrangeCard = ({ title, description, buttonText }) => {
             ref={ref}
             className="bg-[#F68D13] w-full text-white px-6 lg:px-12 py-6 xl:py-0 relative overflow-hidden"
         >
-            <div className="mx-auto xl:-my-10 flex md:flex-row flex-col items-center md:gap-8">
+            <div className="mx-auto xl:-my-5 flex md:flex-row flex-col items-center md:gap-8">
                 {/* Left Side Text Section */}
                 <motion.div
                     className="md:w-3/5"
