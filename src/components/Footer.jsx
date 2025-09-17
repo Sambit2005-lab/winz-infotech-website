@@ -138,7 +138,7 @@ const Footer = ({ className = "" }) => {
                                         LANDING PAGES
                                     </h3>
                                     <ul className="space-y-1 text-gray-700">
-                                        <li><a href="https://hook.winzinfotech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FC8A10]">Doctors & Medical Professionals</a></li>
+                                        <li onClick={() => navigate("/medicalprofession")} className="hover:text-[#FC8A10] cursor-pointer">Doctors & Medical Professionals</li>
                                     </ul>
                                 </div>
                             </div>

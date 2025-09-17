@@ -15,8 +15,11 @@ import BlogDetails from "./components/BlogDetails";
 import Portfolio from "./pages/Portfolio";
 import TermCondition from "./pages/TermCondition";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import useGA4 from "./utils/useGA4";
+import MedicalProfession from "./components/MedicalProfession";
 
 function App() {
+    useGA4
 
     // Smooth scrolling with Lenis
     useEffect(() => {
@@ -54,6 +57,7 @@ function App() {
                 <Route path="portfolio" element={<Portfolio />} />
                 <Route path="term-&-conditions" element={<TermCondition />} />
                 <Route path="privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="medicalprofession" element={<MedicalProfession />} />
                 <Route path="*" element={<div>404 Not Found</div>} />
             </Route>
         </Routes>
